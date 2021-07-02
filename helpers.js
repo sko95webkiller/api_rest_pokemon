@@ -7,6 +7,9 @@ exports.success=(message,data)=>{
 exports.successBIS=(message,data)=>{
     return {message,data}
 }
+exports.successTER=(message,data)=>{
+    return {message,data}
+}
 
 exports.getUniqueId=(pokemon) => {
     const pokemondId=pokemon.map(pokemon=>pokemon.id)
