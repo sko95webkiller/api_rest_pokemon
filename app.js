@@ -10,7 +10,8 @@ const path=require('path')
 const { Stream, Writable } = require('stream')
 const { Body } = require('node-fetch')
 const bodyParser = require('body-parser')
-const { Sequelize } = require('sequelize')
+const { Sequelize,DataTypes } = require('sequelize')
+const pokemonModel=require('./src/models/pokemon')
 
 const sequelize=new Sequelize(
  'pokedex',
@@ -30,16 +31,10 @@ const sequelize=new Sequelize(
     .then(_ => console.log('Vous êtes bien connecté à la base de donnée pokedex du serveur MySQL !!!'))
     .catch(error => console.error(`ECHEC DE CONNEXION: ${error}`))
 
-const {createReadStream}=require('fs')
-const readable=createReadStream('./input-file.txt')
-readable.on('data',(chunk)=>console.log(chunk.toString()))
-readable.on('close',()=>readable.close())
-
-const {createWriteStream}=require('fs')
-const { Console } = require('console')
-const writable=createWriteStream('./output-file.txt','utf-8')
-writable.write('AZERTY')
-writable.end()
+const Pokemon=pokemonModel(sequelize, DataTypes)
+sequelize.sync({force:true})
+    .then(_=>console.log(`La base de données Pokemon a été synchronisée avec succès!`))
+    .catch(error=>console.error(`ERREUR DE SYNCHRO ${error}`))
 
 
 app.use(morgan('dev'))
