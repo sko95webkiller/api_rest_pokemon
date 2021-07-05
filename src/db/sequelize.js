@@ -27,7 +27,7 @@ const initDb = () => {
     return sequelize.sync({force:true})
        .then(_=>{
            console.log(`La base de données Pokemon a été synchronisée avec succès!`)
-           for(let pokemon of test)
+           for(let pokemon of pokemons)
             Pokemon.create({
             name: pokemon.name,
             hp: pokemon.hp,
@@ -41,5 +41,5 @@ const initDb = () => {
 }
 
 module.exports = {
-    initDb, Pokemon, test_db
+    initDb, Pokemon,test_db
 }

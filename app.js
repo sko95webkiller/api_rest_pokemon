@@ -1,14 +1,17 @@
 const express = require('express')
-const app=express()
-const port=3000
 const morgan= require('morgan')
 const favicon=require('serve-favicon')
 const bodyParser = require('body-parser')
+
+const app=express()
+const port=3000
 const sequelize = require('./src/db/sequelize')
 
-app.use(morgan('dev'))
-app.use(favicon(__dirname + '/favicon.ico'))
-app.use(bodyParser.json())
+//Middleware pour debugger les connexions http
+app
+.use(morgan('dev'))
+.use(favicon(__dirname + '/favicon.ico'))
+.use(bodyParser.json())
 
 sequelize.test_db()
 sequelize.initDb()

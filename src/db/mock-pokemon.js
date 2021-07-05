@@ -1,15 +1,7 @@
 
-exports.test = [
-    {
-        name: "Bullbizarre",
-        hp: 25,
-        cp: 5,
-        picture: "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png",
-        types: ["Plante", "Poison"]
-    }
-]
-
-exports.pokemon = [
+//exports.pokemon = 
+module.exports= 
+[
     {
         id: 1,
         name: "Bullbizarre",
@@ -117,5 +109,6 @@ exports.pokemon = [
         picture: "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/012.png",
         types: ["Plante", "Poison"],
         created: "2020-07-13T12:58:55:1192"
-    }
+    },
+
 ]
