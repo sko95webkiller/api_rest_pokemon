@@ -26,14 +26,14 @@ const Pokemon=pokemonModel(sequelize, DataTypes)
 const initDb = () => {
     return sequelize.sync({force:true})
        .then(_=>{
-           console.log(`La base de données Pokemon a été synchronisée avec succès!`)
+           console.log(`La base de données mock_pokemon a été synchronisée avec succès!`)
            for(let pokemon of pokemons)
             Pokemon.create({
             name: pokemon.name,
             hp: pokemon.hp,
             cp: pokemon.cp,
             picture: pokemon.picture,
-            types: pokemon.types.join(',')
+            types: pokemon.types
             })
            .then(bullbizarre => console.log(bullbizarre.toJSON()))
        })
@@ -41,5 +41,5 @@ const initDb = () => {
 }
 
 module.exports = {
-    initDb, Pokemon,test_db
+    initDb, Pokemon, test_db
 }

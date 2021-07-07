@@ -16,7 +16,12 @@ app
 sequelize.test_db()
 sequelize.initDb()
 
-//ici, nous placerons nos futurs points de dterminaison
+//ici, nous placerons nos futurs points de terminaison
+require('./src/routes/findAllPokemons')(app)
+require('./src/routes/findPokemonByPk')(app)
+require('./src/routes/createPokemon')(app)
+require('./src/routes/updatePokemon')(app)
+require('./src/routes/deletePokemon')(app)
 
 app.listen(port, () => console.log(`Express Server is running ! URL:  http://localhost:${port}`))
 
